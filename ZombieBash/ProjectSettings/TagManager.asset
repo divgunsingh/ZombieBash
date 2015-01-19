@@ -3,6 +3,14 @@
 --- !u!78 &1
 TagManager:
   tags:
+  - goal
+  - dead_goal
+  - 
+  - PlayerBase
+  - ZombiesBase
+  - Bullet
+  - UIHUB
+  - PlayerWorldHealthBar
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

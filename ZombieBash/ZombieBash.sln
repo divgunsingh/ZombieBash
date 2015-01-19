@@ -5,7 +5,7 @@ Project("{9FEF0933-3064-0AFA-FBC3-092C7E1A1C71}") = "ZombieBash", "Assembly-CSha
 EndProject
 Project("{9FEF0933-3064-0AFA-FBC3-092C7E1A1C71}") = "ZombieBash", "Assembly-CSharp.csproj", "{F90153C0-4EFA-1797-4158-FB9E0A376F03}"
 EndProject
-Project("{9FEF0933-3064-0AFA-FBC3-092C7E1A1C71}") = "ZombieBash", "Assembly-UnityScript-firstpass.unityproj", "{AD4014B1-BE1B-16E6-D9F9-B998163439CB}"
+Project("{9FEF0933-3064-0AFA-FBC3-092C7E1A1C71}") = "ZombieBash", "Assembly-CSharp-Editor.csproj", "{7E0B3393-E8EF-0E34-B0F8-324543B6482D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,15 +21,15 @@ Global
 		{F90153C0-4EFA-1797-4158-FB9E0A376F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F90153C0-4EFA-1797-4158-FB9E0A376F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F90153C0-4EFA-1797-4158-FB9E0A376F03}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD4014B1-BE1B-16E6-D9F9-B998163439CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD4014B1-BE1B-16E6-D9F9-B998163439CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD4014B1-BE1B-16E6-D9F9-B998163439CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD4014B1-BE1B-16E6-D9F9-B998163439CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E0B3393-E8EF-0E34-B0F8-324543B6482D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E0B3393-E8EF-0E34-B0F8-324543B6482D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E0B3393-E8EF-0E34-B0F8-324543B6482D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E0B3393-E8EF-0E34-B0F8-324543B6482D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-				GlobalSection(MonoDevelopProperties) = preSolution
+																																																													GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

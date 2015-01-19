@@ -22,12 +22,19 @@ public class CameraScript : MonoBehaviour {
 
 		transform.rotation=rotation;
 
-		transform.position=Target.transform.position + transform.TransformDirection(new Vector3(CameraXDelta,CameraYDelta,CameraDistance));
+		if(Target==null){
+			return;
+		}
 
-		Target.transform.rotation=Quaternion.Euler(0,_cameraXRotation,0);
-		var player=Target.GetComponent<PlayerController>();
-		if(player!=null)
-			player.AimDirection=rotation;
+
+				transform.position=Target.transform.position + transform.TransformDirection(new Vector3(CameraXDelta,CameraYDelta,CameraDistance));
+			//transform.position=Target.transform.position;     		
+			Target.transform.rotation=Quaternion.Euler(0,_cameraXRotation,0);
+			var player=Target.GetComponent<PlayerController>();
+			if(player!=null)
+				player.AimDirection=rotation;
+
+	
 
 	}
 	private static float ClampAngle(float angle, float min,float max){
