@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class NetworkController : MonoBehaviour {
 
 	public GameObject PlayerPrefab;
-	public GameObject RandomPrefab;
+
 
 	 public GroundCoverGenerator map;
 	/* NETWORKING*/
@@ -32,6 +32,7 @@ public class NetworkController : MonoBehaviour {
 	private bool _readyToPlay;
 
 	private GameObject _player;
+	public UiHubScript playerui;
 	// Use this for initialization
 	void Start () {
 
@@ -154,9 +155,10 @@ public class NetworkController : MonoBehaviour {
 		_player = PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(0, 1, 0), Quaternion.identity, 0);
 		PlayerCamera.Target = _player;
 
+	
 		//_player.GetComponent<PlayerController>().Initialize(AvailablePlayerColors[UnityEngine.Random.Range(0, AvailablePlayerColors.Count)]);
 		//MainCamera.enabled = false;
-
+		/*
 
 		if (PhotonNetwork.isMasterClient)
 		{
@@ -164,7 +166,7 @@ public class NetworkController : MonoBehaviour {
 			PhotonNetwork.Instantiate(RandomPrefab.name, new Vector3(UnityEngine.Random.Range(-5, 5), 0,
 			                                                           UnityEngine.Random.Range(-5, 5)),
 			                          Quaternion.identity, 0);
-		}
+		}*/
 	}
 	
 	/* GAME STUFF */

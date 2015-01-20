@@ -9,8 +9,8 @@ public class GroundCoverGenerator : MonoBehaviour {
 	public GameObject tree_prefab;
 	//public  float AccesstoGround;
 	private int AreaToCover=30;
-	private int MaxGroundCover=5;
-	private int MinGroundCover=0;
+	//private int MaxGroundCover=5;
+//	private int MinGroundCover=0;
 	public float GridSize=10;
 	public float inner_radius=5;
 	private float _centreAdjustments;
@@ -163,7 +163,7 @@ public class GroundCoverGenerator : MonoBehaviour {
 		}
 		else if (type == "ltree") {
 			//var tree = Instantiate (tree_prefab) as GameObject;
-			var groundCoverTospawn=Random.Range(MinGroundCover,MaxGroundCover);
+			//var groundCoverTospawn=Random.Range(MinGroundCover,MaxGroundCover);
 			for (var i=0; i<2;i++){
 				spawnGroundCover(seed,x,y);
 			}
@@ -171,8 +171,8 @@ public class GroundCoverGenerator : MonoBehaviour {
 		}
 		else if (type == "river") {
 			//var tree = Instantiate (tree_prefab) as GameObject;
-			var wall = Instantiate (RiverPrefabs [Random.Range (0, RiverPrefabs.Count)]) as GameObject;
-			SetObjectToCorrectTransform(wall,x,y);
+//		var wall = Instantiate (RiverPrefabs [Random.Range (0, RiverPrefabs.Count)]) as GameObject;
+			//SetObjectToCorrectTransform(wall,x,y);
 			//SetObjectToCorrectTransform(tree,x,y);
 		}
 		

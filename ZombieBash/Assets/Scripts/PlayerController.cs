@@ -24,10 +24,13 @@ public class PlayerController : Photon.MonoBehaviour {
 
 
 	public UiHubScript UiHub;
+	public Slider playerHealthBar;
 	private Vector3 _accuratePosition;
 	private Quaternion _accurateRotation;
 	
 	public GameObject UiObject;
+
+
 	void Awake(){
 
 		UiObject=	GameObject.FindGameObjectWithTag ("UIHUB");
@@ -38,7 +41,11 @@ public class PlayerController : Photon.MonoBehaviour {
 
 	void Start () {
 //		_isGrounded = false;
-
+		GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+		foreach (var gameobject in allObjects) {
+				
+			gameobject.SendMessage("onNewPlayer",SendMessageOptions.DontRequireReceiver);
+		}
 		_powerTypes = new List<SuperPower1> {
 			new SuperPower1{
 				powerDamage = 0, 
@@ -96,7 +103,8 @@ public class PlayerController : Photon.MonoBehaviour {
 		UiHub.EnergyBar.maxValue = UiHub.MaxEnergy;
 		UiHub.EnergyBar.minValue = 0;
 
-
+		playerHealthBar.maxValue = UiHub.MaxHealth;
+		playerHealthBar.minValue = 0;
 
 		UiHub.energy = UiHub.MaxEnergy;
 		UiHub.EnergyBar.value = UiHub.energy;
@@ -107,6 +115,7 @@ public class PlayerController : Photon.MonoBehaviour {
 
 		UiHub.health = UiHub.MaxHealth;
 		UiHub.HealthBar.value = UiHub.health;
+		playerHealthBar.value = UiHub.health;
 
 		UiHub.score = 0;
 		UiHub.ScoreText.text = UiHub.score.ToString();
@@ -150,7 +159,9 @@ public class PlayerController : Photon.MonoBehaviour {
 			}
 
 			UiHub.energy += 1;
-			UiHub.EnergyBar.value = UiHub.energy;  
+			UiHub.EnergyBar.value = UiHub.energy; 
+			playerHealthBar.value= UiHub.health; 
+			UiHub.HealthBar.value= UiHub.health; 
 			//UiHub.PlayerHealthBarSlider.value=UiHub.energy;
 	
 				
@@ -214,13 +225,15 @@ public class PlayerController : Photon.MonoBehaviour {
 	}
 
 
-	private void AdjustHealth(int delta)
+	private void AdjustHealth()
 	{
-		UiHub.health += delta;
-		
+		UiHub.health -=5 ;
+		Debug.Log (UiHub.health);
+		playerHealthBar.value= UiHub.health; 
+		UiHub.HealthBar.value = UiHub.health;
 		// check if dead; clamp health behind maxhealth
 		if (UiHub.health < 1)
-			Die();
+			deletePlayer();
 		else if (UiHub.health > UiHub.MaxHealth)
 			UiHub.health = UiHub.MaxHealth;
 		
@@ -238,6 +251,16 @@ public class PlayerController : Photon.MonoBehaviour {
 		UiHub.energy -= delta;
 
 
+	}
+
+	public void deletePlayer(){
+		
+		Destroy (this.gameObject);
+		GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+		foreach (var gameobject in allObjects) {
+			
+			gameobject.SendMessage("onDestroyedPlayer",SendMessageOptions.DontRequireReceiver);
+		}
 	}
 	
 	private void Die()

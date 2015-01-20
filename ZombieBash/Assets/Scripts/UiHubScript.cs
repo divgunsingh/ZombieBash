@@ -7,10 +7,10 @@ public class UiHubScript : MonoBehaviour {
 	public Slider EnergyBar;
 	public Text   ScoreText;
 
-	public Slider PlayerHealthBarSlider;
+
 
 	// Use this for initialization
-	public int MaxHealth = 5;
+	public int MaxHealth = 50;
 	public int health;
 	
 	public int score;
@@ -19,18 +19,10 @@ public class UiHubScript : MonoBehaviour {
 	public int energy;
 
 
-	public GameObject PlayerHealthBar;
-	public void Awake(){
-
-		PlayerHealthBar=GameObject.FindGameObjectWithTag ("Player");
-//		PlayerHealthBarSlider=PlayerHealthBar.GetComponent<Slider>();
-
-	}
-
-	public void Update(){
 
 
 
-	}
+
+
 
 }

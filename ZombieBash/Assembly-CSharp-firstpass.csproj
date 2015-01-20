@@ -56,15 +56,29 @@
      <Compile Include="Assets\Plugins\ChatApi\ChatState.cs" />
      <Compile Include="Assets\Plugins\ChatApi\ChatUserStatus.cs" />
      <Compile Include="Assets\Plugins\ChatApi\IChatClientListener.cs" />
+     <None Include="Assets\_IMPORTED\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
      <None Include="Assets\Plugins\release_history.txt" />
+     <None Include="Assets\_IMPORTED\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\_IMPORTED\AstarPathfindingProject\Plugins\dependencies.txt" />
+     <None Include="Assets\_IMPORTED\AstarPathfindingProject\Readme_upgrading.txt" />
+     <None Include="Assets\_IMPORTED\AstarPathfindingProject\Readme.txt" />
      <None Include="Assets\_IMPORTED\Photon Unity Networking\readme.txt" />
+     <None Include="Assets\_IMPORTED\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
+     <None Include="Assets\_IMPORTED\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
+     <None Include="Assets\_IMPORTED\AstarPathfindingProject\link.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Program Files/Unity4.6/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
  <HintPath>C:/Users/Harvinder Singh/Desktop/ZombieBash/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>C:/Users/Harvinder Singh/Desktop/ZombieBash/Assets/_IMPORTED/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.JsonFx">
+ <HintPath>C:/Users/Harvinder Singh/Desktop/ZombieBash/Assets/_IMPORTED/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
