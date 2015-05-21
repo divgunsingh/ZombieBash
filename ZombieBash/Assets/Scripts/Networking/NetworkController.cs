@@ -152,7 +152,7 @@ public class NetworkController : MonoBehaviour {
 		QuitRoomButton.onClick.AddListener(OnQuitRoom);
 
 
-		_player = PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(0, 1, 0), Quaternion.identity, 0);
+		_player = PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(0, 20, 0), Quaternion.identity, 0);
 		PlayerCamera.Target = _player;
 
 	

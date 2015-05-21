@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ZombieBaseDestroyScript : MonoBehaviour {
 
-	int hit = 5;
+	int hit = 20;
 
 	// Use this for initialization
 	void Start () {

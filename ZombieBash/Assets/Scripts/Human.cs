@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine.UI;
 
 
-enum EnemyState { insane, changetozombie, hungry , scared,Fleeing}
+enum EnemyState { insane, changetozombie, hungry , scared,help}
 
 [RequireComponent (typeof(CharacterController)), RequireComponent (typeof(Seeker))]
 
@@ -34,7 +34,7 @@ public class Human : AIPath {
 	public Slider HealthBar;
 
 	// Use this for initialization
-	public new void Start () {
+	public new void Start () {   //o lculate the relation of distance b/w the human and zombies
 		_knownZombies = GameObject.FindGameObjectsWithTag("Zombie").
 			Select(zombie => zombie.GetComponent<ZombieBehaviour>()).
 				Where(behaviour => behaviour != null).ToList();
@@ -64,9 +64,18 @@ public class Human : AIPath {
 		_nearestZombie =  _knownZombies.OrderBy(player => Vector3.Distance(player.transform.position, transform.position)).ToList()[0];
 		
 		/* IF THERE ARE ANY NEARBY PLAYERS WE EITHER FLEE OR CHASE */
-		if (Vector3.Distance(_nearestZombie.transform.position, transform.position) < ChaseDistance)
-			// if our health is too low, then we flee
-			ChangeState(_health <= FleeHealth ? EnemyState.Fleeing : EnemyState.scared);
+		if (Vector3.Distance (_nearestZombie.transform.position, transform.position) < 0) {
+						// if our health is too low, then we flee
+		ChangeState (_health <= FleeHealth ? EnemyState.help : EnemyState.scared);
+				} 
+
+		else if (Vector3.Distance (_nearestZombie.transform.position, transform.position) < 5) {
+		
+			//Human Change to Zombie 
+			ChangeState(EnemyState.changetozombie);
+
+		
+		}
 		else
 			// all else considered, we idle
 			ChangeState(EnemyState.hungry);
@@ -77,21 +86,20 @@ public class Human : AIPath {
 		_currentState = newState;
 		StatusText.text = newState.ToString();
 	}
-	// Update is called once per frame
+
 	protected new void Update () {
-		//var move = new Vector3 (1, 0, 0);
-		//rigidbody.AddForce (transform.TransformDirection(move)*movingSpeed);
+
 		UpdateStateInfo();
 
 		// enum EnemyState { insane, changetozombie, hungry , scared,Fleeing}
 		switch (_currentState)
 		{
 		case EnemyState.insane:
-			//target = _nearestZombie.transform;
+			target = _nearestZombie.transform;
 			HandleChase();
 
 			break;
-		case EnemyState.Fleeing:
+		case EnemyState.help:
 			// we very simply run away
 			// nothing fancy, just trying to stay clear of the player
 			if (_nearestZombie != null)
@@ -100,6 +108,8 @@ public class Human : AIPath {
 			break;
 		case EnemyState.hungry:
 			// we do nothing
+			target = _nearestZombie.transform;
+			HandleChase();
 
 			break;
 		case EnemyState.scared:
@@ -108,7 +118,10 @@ public class Human : AIPath {
 			break;
 		case EnemyState.changetozombie:
 			// we do nothing
-
+			gameObject.GetComponent<ZombieBehaviour>().enabled = true;
+			gameObject.GetComponent<Human>().enabled=false;
+			gameObject.GetComponent<Renderer>().material.color = Color.red;
+			gameObject.tag = "Zombie";
 			break;
 
 		}

@@ -126,7 +126,12 @@ public class ZombieBehaviour : AIPath {
 				controller.SimpleMove(speedZombie * (transform.position - _nearestPlayer.transform.position).normalized);
 			break;
 		case EnemyState.Idle:
-			// we do nothing
+			//Move Towards Player BAse
+		//	var pbob= GameObject.FindGameObjectWithTag("PlayerBase");
+			//var zbob= GameObject.FindGameObjectWithTag("ZombiesBase");
+//			controller.SimpleMove(speedZombie * ( pbob.transform.position -transform.position).normalized);
+
+			//controller.SimpleMove(speedZombie * ( zbob.transform.position -transform.position).normalized);
 			break;
 		}
 		}
@@ -134,7 +139,7 @@ public class ZombieBehaviour : AIPath {
 	{
 		//Calculate desired velocity
 		var dir = CalculateVelocity(tr.position);
-//		Debug.Log (target.position);
+
 		
 		//Rotate towards targetDirection (filled in by CalculateVelocity)
 		RotateTowards(targetDirection);
@@ -154,20 +159,24 @@ public class ZombieBehaviour : AIPath {
 		
 		var bullet = Instantiate (ZombieBullet) as GameObject;
 		bullet.transform.position = transform.position;
-		bullet.rigidbody.velocity = (targetDirection*100);
+		bullet.GetComponent<Rigidbody>().velocity = (targetDirection*100);
 
 		
 		
 	}
 
+	public void die(){
+
+	
+	
+	}
 	void OnCollisionEnter(Collision other) {
 		Debug.Log("Player Collided");
 		
 		if (other.gameObject.tag == "Player") {
 
-
-			hub.health -=1;
-			
+          hub.health -=1;
+			Debug.Log(hub.health);
 				}
 				if (other.gameObject.tag == "Bullet") {
 			MaxHealth-=10;

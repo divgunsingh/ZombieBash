@@ -10,7 +10,7 @@ public class PlayerController : Photon.MonoBehaviour {
 	public float jumpForce = 200;
 	public float  BulletForce=100;
 	public Quaternion AimDirection;
-	private List<SuperPower1> _powerTypes;
+	public List<SuperPower1> _powerTypes;
 	private int _currentlyUsedPower = 0;
 
 
@@ -138,7 +138,7 @@ public class PlayerController : Photon.MonoBehaviour {
 				shoot ();
 			
 			if (Input.GetButton ("Fire2")) {
-				rigidbody.velocity = Vector3.up * 3f;
+				GetComponent<Rigidbody>().velocity = Vector3.up * 3f;
 			}
 			
 			if (Input.GetKeyDown (KeyCode.O))
@@ -175,20 +175,20 @@ public class PlayerController : Photon.MonoBehaviour {
 	{
 		var targetVelocity = new Vector3(Input.GetAxis ("Horizontal"),0,Input.GetAxis ("Vertical"));
 		
-		rigidbody.AddForce (transform.TransformDirection(targetVelocity)*speed);
+		GetComponent<Rigidbody>().AddForce (transform.TransformDirection(targetVelocity)*speed);
 		
 		if(Input.GetButtonDown("Fire1"))
 			shoot();
 
 		if (Input.GetButtonDown ("Jump")) {
-						rigidbody.AddForce (new Vector3 (0, jumpForce, 0));
+						GetComponent<Rigidbody>().AddForce (new Vector3 (0, jumpForce, 0));
 				}
 	}
 	
 	private void Interpolate()
 	{
-		rigidbody.position = Vector3.Lerp(rigidbody.position, _accuratePosition, Time.deltaTime * 5f);
-		rigidbody.rotation = Quaternion.Lerp(rigidbody.rotation, _accurateRotation, Time.deltaTime * 5f);
+		GetComponent<Rigidbody>().position = Vector3.Lerp(GetComponent<Rigidbody>().position, _accuratePosition, Time.deltaTime * 5f);
+		GetComponent<Rigidbody>().rotation = Quaternion.Lerp(GetComponent<Rigidbody>().rotation, _accurateRotation, Time.deltaTime * 5f);
 	}
 
 
@@ -197,8 +197,8 @@ public class PlayerController : Photon.MonoBehaviour {
 	{
 		if (stream.isWriting)
 		{
-			stream.SendNext(rigidbody.position);
-			stream.SendNext(rigidbody.rotation);
+			stream.SendNext(GetComponent<Rigidbody>().position);
+			stream.SendNext(GetComponent<Rigidbody>().rotation);
 		}
 		else
 		{
@@ -212,19 +212,19 @@ public class PlayerController : Photon.MonoBehaviour {
 
 		var bullet = Instantiate (BulletPrefab) as GameObject;
 		bullet.transform.position = transform.position;
-		bullet.rigidbody.velocity = (AimDirection* new Vector3(0,0,BulletForce));
+		bullet.GetComponent<Rigidbody>().velocity = (AimDirection* new Vector3(0,0,BulletForce));
 
 
 		var bulletModel = _powerTypes[_currentlyUsedPower];
-		bullet.particleSystem.startColor = bulletModel.powerColor;
-		bullet.renderer.material.color = bulletModel.powerColor;
+		bullet.GetComponent<ParticleSystem>().startColor = bulletModel.powerColor;
+		bullet.GetComponent<Renderer>().material.color = bulletModel.powerColor;
 
 		AdjustEnergy (10);
 
 	
 	}
 
-
+	[RPC]
 	private void AdjustHealth()
 	{
 		UiHub.health -=5 ;

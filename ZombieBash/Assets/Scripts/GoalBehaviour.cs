@@ -10,7 +10,7 @@ public class GoalBehaviour : MonoBehaviour
 		GetComponentInChildren<Light>().enabled = false;
 		GetComponentInChildren<Canvas>().enabled = false;
 		//transform.GetChild(1).gameObject.SetActive(false);
-		renderer.material = DeactivatedMaterial;
+		GetComponent<Renderer>().material = DeactivatedMaterial;
 		gameObject.tag = "dead_goal";
 	}
 }

@@ -8,7 +8,7 @@ public class GroundCoverGenerator : MonoBehaviour {
 	public List<GameObject>RiverPrefabs;
 	public GameObject tree_prefab;
 	//public  float AccesstoGround;
-	private int AreaToCover=30;
+	private int AreaToCover=25;
 	//private int MaxGroundCover=5;
 //	private int MinGroundCover=0;
 	public float GridSize=10;
@@ -51,30 +51,28 @@ public class GroundCoverGenerator : MonoBehaviour {
 				blueprint[x,y]="dtree";
 				*/
 		
-		for (var x=0; x<30;x++)
+		for (var x=0; x<25;x++)
 			for(var y=0; y<5; y++)
-				blueprint[x,y]="dtree";
+				blueprint[x,y]="wall";
 		
-		for (var x=0; x<30;x++)
+		for (var x=0; x<25;x++)
 			for(var y=5; y<10; y++)
-				blueprint[x,y]="dtree";
+				blueprint[x,y]="wall";
 		
-		for (var x=0; x<30;x++)
+		for (var x=0; x<25;x++)
 			for(var y=10; y<15; y++)
-				blueprint[x,y]="mtree";
+				blueprint[x,y]="wall";
 		
 		
-		for (var x=0; x<30;x++)
+		for (var x=0; x<25;x++)
 			for(var y=15; y<20; y++)
-				blueprint[x,y]="mtree";
+				blueprint[x,y]="wall";
 		
-		for (var x=0; x<30;x++)
+		for (var x=0; x<25;x++)
 			for(var y=20; y<25; y++)
-				blueprint[x,y]="ltree";
+				blueprint[x,y]="wall";
 		
-		for (var x=0; x<30;x++)
-			for(var y=25; y<30; y++)
-				blueprint[x,y]="ltree";
+
 		
 		//River
 		for (var x=0; x<5;x++)
@@ -97,10 +95,7 @@ public class GroundCoverGenerator : MonoBehaviour {
 		for (var x=20; x<25;x++)
 			for(var y=20; y<25; y++)
 				blueprint[x,y]="river";
-		
-		for (var x=25; x<30;x++)
-			for(var y=25; y<30; y++)
-				blueprint[x,y]="river";
+
 		
 		/*
 
@@ -171,8 +166,8 @@ public class GroundCoverGenerator : MonoBehaviour {
 		}
 		else if (type == "river") {
 			//var tree = Instantiate (tree_prefab) as GameObject;
-//		var wall = Instantiate (RiverPrefabs [Random.Range (0, RiverPrefabs.Count)]) as GameObject;
-			//SetObjectToCorrectTransform(wall,x,y);
+	var wall = Instantiate (RiverPrefabs [Random.Range (0, RiverPrefabs.Count)]) as GameObject;
+			SetObjectToCorrectTransform(wall,x,y);
 			//SetObjectToCorrectTransform(tree,x,y);
 		}
 		

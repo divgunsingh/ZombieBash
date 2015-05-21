@@ -11,13 +11,13 @@ public class PlayerBaseDetroy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+    
 	}
 
 	void OnCollisionEnter(Collision collision)
 	{
 		Debug.Log ("Collision with Zombie Base");
-		if (hit == 0)
+		if (hit <= 0)
 			DestroyPlayerBase ();
 		
 		

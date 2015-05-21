@@ -44,4 +44,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - AdjustEnergy
   - shoot
+  - AdjustHealth
   DisableAutoOpenWizard: 0

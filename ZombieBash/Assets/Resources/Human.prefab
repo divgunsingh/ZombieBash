@@ -13,9 +13,12 @@ GameObject:
   - 23: {fileID: 2364246}
   - 54: {fileID: 5439138}
   - 114: {fileID: 11442878}
+  - 114: {fileID: 11465636}
+  - 143: {fileID: 14344104}
+  - 114: {fileID: 11493558}
   m_Layer: 0
   m_Name: Human
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +162,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.3900003, y: .939999998, z: 43.0400009}
+  m_LocalPosition: {x: 7.80000019, y: 5.0999999, z: 25.2000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22492362}
@@ -219,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repathRate: .5
-  target: {fileID: 0}
+  target: {fileID: 479568, guid: 83666d0f64532054ca2be84b107c46ba, type: 2}
   canSearch: 1
   canMove: 1
   speed: 3
@@ -232,11 +235,39 @@ MonoBehaviour:
   movingSpeed: 10
   health: 10
   SleepVelocity: .400000006
-  ChaseDistance: 5
+  ChaseDistance: 10
   MaxHealth: 3
   FleeHealth: 1
   StatusText: {fileID: 11492368}
   HealthBar: {fileID: 11492374}
+--- !u!114 &11465636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawGizmos: 1
+  detailedGizmos: 0
+  saveGetNearestHints: 1
+  startEndModifier:
+    priority: 1
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags:
+    tagsChange: -1
+    tagsSet: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &11492362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,6 +442,39 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11493558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164246}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8455195e04649354d84e270673672246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repathRate: .5
+  target: {fileID: 464246}
+  canSearch: 1
+  canMove: 1
+  speed: 3
+  turningSpeed: 5
+  slowdownDistance: .600000024
+  pickNextWaypointDist: 2
+  forwardLook: 1
+  endReachedDistance: .200000003
+  closestOnPathCheck: 1
+  speedZombie: 5
+  jumpforce: 0
+  MaxHealth: 100
+  hub: {fileID: 0}
+  ZombieBullet: {fileID: 124634, guid: 314240743362fc046beb348f112f09dd, type: 2}
+  _timeDelay: 2
+  SleepVelocity: .400000006
+  ChaseDistance: 5
+  FleeHealth: 1
+  StatusText: {fileID: 11492368}
+  HealthBar: {fileID: 11492374}
 --- !u!136 &13664246
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -423,6 +487,20 @@ CapsuleCollider:
   m_Radius: .5
   m_Height: 2
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &14344104
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164246}
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .500000119
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &22292362
 CanvasRenderer:

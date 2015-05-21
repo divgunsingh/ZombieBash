@@ -5,7 +5,7 @@ public class SpawnHuman : MonoBehaviour {
 
 
 	public GameObject human_Prefab;
-	public float _timeDelay = 2f;
+	public float _timeDelay = 15f;
 	private float _timeProgress = 0f;
 	// Use this for initialization
 	void Start () {
